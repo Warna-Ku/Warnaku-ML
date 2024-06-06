@@ -103,7 +103,7 @@ def parse_save_weights_arguments():
     args.parallel = args.parallel == "True"
 
     # verify that the configuration of the model exists for the specified slurm configuration
-    if args.model_name not in slurm_config.configurations[args.config]):
+    if args.model_name not in slurm_config.configurations[args.config]:
         parser.error(f'Model {args.model_name} not available for configuration {args.config}.')
 
     return args
