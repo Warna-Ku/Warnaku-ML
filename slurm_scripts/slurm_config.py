@@ -35,11 +35,9 @@ class SlurmConfig:
 # === UNet-specific configurations ===
 
 # config for hpo
-# config for hpo
 UNET_INPUT_SIZE_HPO = (256, 256)
-UNET_WIDTH_HPO, UNET_HEIGHT_HPO = UNET_INPUT_SIZE_HPO  # Pisahkan lebar dan tinggi
 tf.keras.Sequential([
-    tf.keras.layers.Resizing(UNET_WIDTH_HPO, UNET_HEIGHT_HPO),
+    tf.keras.layers.Resizing(UNET_INPUT_SIZE_HPO),
     tf.keras.layers.Normalization(mean=config.NORMALIZE_MEAN, variance=config.NORMALIZE_STD)])
 UNET_CFG_HPO = SlurmConfig(
     UNET_INPUT_SIZE_HPO,
