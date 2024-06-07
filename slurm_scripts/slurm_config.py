@@ -131,3 +131,4 @@ UNET_CFG_HPO = SlurmConfig(
     {
         "lr": tune.grid_search([1e-5, 1e-4, 1e-3, 1e-2]),
         "lr_scheduler": tune
+    }
