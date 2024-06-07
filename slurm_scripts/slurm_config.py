@@ -42,13 +42,13 @@ GLOBAL_CFG_TRAINING_DEMO = SlurmConfig(
     ImageDataGenerator(rescale=1./255),
     False,
     tf.keras.optimizers.Adam,
-    config.DEMO_PATH,
+    "demo_path",
     {
         "lr": 0.01,
         "lr_scheduler": "none",
         "batch_size": 32,
         "from_checkpoint": False,
-        "checkpoint_dir": os.path.abspath("./" + config.DEMO_PATH) + '/'
+        "checkpoint_dir": os.path.abspath("./demo_path") + '/'
     },
     False
 ).config_dict()
@@ -64,13 +64,13 @@ FASTSCNN_CFG_HPO = SlurmConfig(
     ImageDataGenerator(rescale=1./255),
     True,
     tf.keras.optimizers.Adam,
-    config.HPO_PATH,
+    "hpo_path",
     {
         "lr": tune.grid_search([1e-5, 1e-4, 1e-3, 1e-2]),
         "lr_scheduler": tune.grid_search(["none", "linear"]),
         "batch_size": tune.grid_search([16, 32]),
         "from_checkpoint": False,
-        "checkpoint_dir": os.path.abspath("./" + config.HPO_PATH) + '/'
+        "checkpoint_dir": os.path.abspath("./hpo_path") + '/'
     },
     True
 ).config_dict()
@@ -90,13 +90,13 @@ FASTSCNN_CFG_TRAINING_BEST = SlurmConfig(
     ImageDataGenerator(rescale=1./255),
     True,
     tf.keras.optimizers.Adam,
-    config.CHECKPOINTS_PATH,
+    "checkpoints_path",
     {
         "lr": 0.001,
         'lr_scheduler': "none",
         "batch_size": 16,
         "from_checkpoint": False,
-        "checkpoint_dir": os.path.abspath("./" + config.CHECKPOINTS_PATH) + '/'
+        "checkpoint_dir": os.path.abspath("./checkpoints_path") + '/'
     },
     False
 ).config_dict()
@@ -112,13 +112,13 @@ UNET_CFG_HPO = SlurmConfig(
     ImageDataGenerator(rescale=1./255),
     True,
     tf.keras.optimizers.Adam,
-    config.HPO_PATH,
+    "hpo_path",
     {
         "lr": tune.grid_search([1e-5, 1e-4, 1e-3, 1e-2]),
         "lr_scheduler": tune.grid_search(["none", "linear"]),
         "batch_size": tune.grid_search([16, 32]),
         "from_checkpoint": False,
-        "checkpoint_dir": os.path.abspath("./" + config.HPO_PATH) + '/'
+        "checkpoint_dir": os.path.abspath("./hpo_path") + '/'
     },
     True
 ).config_dict()
@@ -138,13 +138,13 @@ UNET_CFG_TRAINING_BEST = SlurmConfig(
     ImageDataGenerator(rescale=1./255),
     True,
     tf.keras.optimizers.Adam,
-    config.CHECKPOINTS_PATH,
+    "checkpoints_path",
     {
         "lr": 1e-4,
         'lr_scheduler': "none",
         "batch_size": 16,
         "from_checkpoint": False,
-        "checkpoint_dir": os.path.abspath("./" + config.CHECKPOINTS_PATH) + '/'
+        "checkpoint_dir": os.path.abspath("./checkpoints_path") + '/'
     },
     False
 ).config_dict()
