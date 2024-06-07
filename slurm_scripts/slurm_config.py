@@ -66,8 +66,9 @@ UNET_INPUT_SIZE_TRAINING_BEST = (256, 256)
 UNET_CFG_TRAINING_BEST = SlurmConfig(
     UNET_INPUT_SIZE_TRAINING_BEST,
     tf.keras.Sequential([
-        tf.keras.layers.ColorJitter(brightness=0.25, contrast=0.25),
         tf.keras.layers.Resizing(*UNET_INPUT_SIZE_TRAINING_BEST),
+        tf.keras.layers.Lambda(lambda x: tf.image.random_brightness(x, max_delta=0.25)),
+        tf.keras.layers.Lambda(lambda x: tf.image.random_contrast(x, lower=0.75, upper=1.25)),
         tft.custom_transforms.BilateralFilter(sigma_color=50, sigma_space=100, diameter=7),
         tf.keras.layers.Normalization(mean=config.NORMALIZE_MEAN, variance=config.NORMALIZE_STD)]),
     tf.keras.Sequential([
