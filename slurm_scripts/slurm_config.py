@@ -37,17 +37,17 @@ class SlurmConfig:
 # config for hpo
 UNET_INPUT_SIZE_HPO = (256, 256)
 tf.keras.Sequential([
-    tf.keras.layers.Resizing(UNET_INPUT_SIZE_HPO),
+    tf.keras.layers.Resizing(*UNET_INPUT_SIZE_HPO),
     tf.keras.layers.Normalization(mean=config.NORMALIZE_MEAN, variance=config.NORMALIZE_STD)])
 UNET_CFG_HPO = SlurmConfig(
     UNET_INPUT_SIZE_HPO,
     tf.keras.Sequential([
-        tf.keras.layers.Resizing(UNET_INPUT_SIZE_HPO),
+        tf.keras.layers.Resizing(*UNET_INPUT_SIZE_HPO),
         tf.keras.layers.Normalization(mean=config.NORMALIZE_MEAN, variance=config.NORMALIZE_STD)]),
     tf.keras.Sequential([
-        tf.keras.layers.Resizing(UNET_INPUT_SIZE_HPO),
+        tf.keras.layers.Resizing(*UNET_INPUT_SIZE_HPO),
         tf.keras.layers.Normalization(mean=config.NORMALIZE_MEAN, variance=config.NORMALIZE_STD)]),
-    tf.keras.Sequential([tf.keras.layers.Resizing(UNET_INPUT_SIZE_HPO)]),
+    tf.keras.Sequential([tf.keras.layers.Resizing(*UNET_INPUT_SIZE_HPO)]),
     True,
     tf.keras.optimizers.Adam,
     config.HPO_PATH,
@@ -67,14 +67,14 @@ UNET_CFG_TRAINING_BEST = SlurmConfig(
     UNET_INPUT_SIZE_TRAINING_BEST,
     tf.keras.Sequential([
         tf.keras.layers.ColorJitter(brightness=0.25, contrast=0.25),
-        tf.keras.layers.Resizing(UNET_INPUT_SIZE_TRAINING_BEST),
+        tf.keras.layers.Resizing(*UNET_INPUT_SIZE_TRAINING_BEST),
         tft.custom_transforms.BilateralFilter(sigma_color=50, sigma_space=100, diameter=7),
         tf.keras.layers.Normalization(mean=config.NORMALIZE_MEAN, variance=config.NORMALIZE_STD)]),
     tf.keras.Sequential([
-        tf.keras.layers.Resizing(UNET_INPUT_SIZE_TRAINING_BEST),
+        tf.keras.layers.Resizing(*UNET_INPUT_SIZE_TRAINING_BEST),
         tft.custom_transforms.BilateralFilter(sigma_color=50, sigma_space=100, diameter=7),
         tf.keras.layers.Normalization(mean=config.NORMALIZE_MEAN, variance=config.NORMALIZE_STD)]),
-    tf.keras.Sequential([tf.keras.layers.Resizing(UNET_INPUT_SIZE_TRAINING_BEST)]),
+    tf.keras.Sequential([tf.keras.layers.Resizing(*UNET_INPUT_SIZE_TRAINING_BEST)]),
     True,
     tf.keras.optimizers.Adam,
     config.CHECKPOINTS_PATH,
