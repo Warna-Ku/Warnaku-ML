@@ -15,3 +15,11 @@ The `models` folder contains various formats of the trained model after the trai
 - **Weight Files:** These are individual files containing the trained weights of the model, which can be loaded and used with the model architecture.
 
 By providing the trained model in multiple formats, we ensure compatibility with various deployment scenarios and facilitate easier integration into the WarnaKu mobile application.
+
+## Usage
+To get the WarnaKu machine learning model, follow these steps:
+
+1. Clone the repository: ```git clone https://github.com/Warna-Ku/Warnaku-ML.git```
+2. If you want to train your own model, open the `Model Training.ipynb` notebook and follow the instructions to train the deep learning model for face segmentation. Alternatively, go to the `models` folder and download one of the saved models.
+3. Open the `Palette Classification.ipynb` notebook and follow the instructions to classify user images into specific color palettes or seasonal color categories using the trained model.
+4. Integrate the color analysis functionality into the WarnaKu mobile application or web interface for end-users.
